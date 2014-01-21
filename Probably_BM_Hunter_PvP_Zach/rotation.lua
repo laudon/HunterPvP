@@ -53,6 +53,7 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
  { "#trinket1", "modifier.cooldowns" },
  { "Berserking" },
  { "Blood Fury" },
+ { "Lifeblood" },
  { "Beastial Wrath" },
  { "Rabid" },
  { "Stampede", "modifier.cooldowns" },
@@ -62,6 +63,7 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
  
   --Start Rotation
  { "Counter Shot", {"target.health < 40", "target.casting"}}, --auto interrupt if target is below 40%
+ { "Multi-Shot", { "modifier.multitarget", "!pet.buff(Beast Cleave)"}},
  { "Kill Shot", "target.health <= 20" }, 
  { "Concussive Shot", "target.moving"},
  { "A Murder of Crows" },
@@ -90,8 +92,7 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
 {
 { "Call Pet 1", { "toggle.callpet", "!pet.exists" } },
 { "pause", "player.buff(Feign Death)" },
-{ "pause", "player.buff(Camouflage)" },
-{"Hunter's Mark", {"target.exists", "!target.debuff(Hunter's Mark)"}, "target" }
+{ "Hunter's Mark", {"target.exists", "!target.debuff(Hunter's Mark)"}, "target" }
 --{"Aspect of the Cheetah", {"player.moving", "!player.buff(Aspect of the Cheetah)"}}
 },
 function()
