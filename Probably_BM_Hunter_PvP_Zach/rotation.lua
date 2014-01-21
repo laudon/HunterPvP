@@ -4,6 +4,7 @@
 ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
 
 { "pause", "player.buff(Feign Death)" },
+{ "pause", "player.buff(Camouflage)" },
 --Keybinds
  { "Scatter Shot", "modifier.control", "mouseover" }, 
  { "Freezing trap", "modifier.alt", "ground" }, 
@@ -39,7 +40,9 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
  { "Master's Call", "player.state.snare"},
  { "#5512", "player.health <= 50" }, --Healthstone
  --Pet survival
- { "Mend Pet", {"pet.health <= 90", "!pet.buff{Mend Pet}"}},
+ { "Mend Pet", {"pet.health <= 90", "!pet.buff{Mend Pet}", "pet.exists"}},
+ { "Call Pet 1", { "toggle.callpet", "!pet.exists" } }, 
+ { "Heart of the Phoenix", "!pet.alive" }, 
 
  --Check if target is immune
  {
@@ -85,7 +88,13 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
  }, 
 --Out of combat 
 {
+{ "Call Pet 1", { "toggle.callpet", "!pet.exists" } },
+{ "pause", "player.buff(Feign Death)" },
+{ "pause", "player.buff(Camouflage)" },
 {"Hunter's Mark", {"target.exists", "!target.debuff(Hunter's Mark)"}, "target" }
 --{"Aspect of the Cheetah", {"player.moving", "!player.buff(Aspect of the Cheetah)"}}
-}
-)
+},
+function()
+ProbablyEngine.toggle.create('callpet', 'Interface\\Icons\\ability_hunter_pet_raptor', 'Call Pet 1', 'Toggle to keep the pet in your first pet slot out.')
+end
+	)
