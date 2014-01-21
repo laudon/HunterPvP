@@ -3,6 +3,7 @@
 -- Created on Jan 21st 2014 1:45 am
 ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
 
+{ "pause", "player.buff(Feign Death)" },
 --Keybinds
  { "Scatter Shot", "modifier.control", "mouseover" }, 
  { "Freezing trap", "modifier.alt", "ground" }, 
@@ -79,7 +80,7 @@ ProbablyEngine.rotation.register_custom(253, "BM_Hunter_PvP", {
 			"!target.buff(Touch of Karma).any", 
 			"!target.buff(Materialize).any",
 			"!target.buff(Dispersion).any",
-   		 }
+			}
     },
  }, 
 --Out of combat 
